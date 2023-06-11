@@ -12,12 +12,14 @@ public class TestServlet {
     @RequestMapping("/greetings")
     protected ModelAndView Greeting(){
 
-        ModelAndView model = new ModelAndView("test");
+        ModelAndView model = new ModelAndView();
 
         model.addObject("Greetings", "Welcome to the testing part of the project");
-//        model.setViewName("test");
+        model.setViewName("test");
 
         return model;
     }
 
 }
+
+
