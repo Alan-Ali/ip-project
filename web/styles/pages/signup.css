@@ -1,0 +1,32 @@
+body {
+
+    background-size: cover;
+
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    margin: 100px auto 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.create-account {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.create-account a {
+    color: #000;
+    text-decoration: none;
+}
