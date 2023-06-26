@@ -1,6 +1,6 @@
 package com.mvcspring.controller;
 
-import com.mvcspring.controller.utils.FileUploadPath;
+import com.mvcspring.utils.FileUploadPath;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

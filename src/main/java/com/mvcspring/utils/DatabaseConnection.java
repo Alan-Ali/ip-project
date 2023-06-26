@@ -1,18 +1,21 @@
-package com.mvcspring.controller;
+package com.mvcspring.utils;
 
-import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
+
 @Configuration
-public class DatabaseConfig {
+public class DatabaseConnection {
 
     @Bean
-    public DataSource dataSource() {
+    public static DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
         String Driver = "com.mysql.cj.jdbc.Driver";
-        String Url = "jdbc:mysql://localhost:3306/ip_database";
+        String DatabaseName = "ip_database";
+        String Url = "jdbc:mysql://localhost:3306/"+DatabaseName;
         String Username = "root";
         String Password = "";
         dataSource.setDriverClassName(Driver);

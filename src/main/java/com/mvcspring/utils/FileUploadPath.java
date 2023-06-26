@@ -1,4 +1,4 @@
-package com.mvcspring.controller.utils;
+package com.mvcspring.utils;
 
 public class FileUploadPath {
 

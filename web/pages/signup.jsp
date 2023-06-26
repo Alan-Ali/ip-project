@@ -14,7 +14,7 @@
 <body>
   <div class="container">
     <h2>Sign Up</h2>
-    <form>
+    <form action="${pageContext.request.contextPath}/userSignup" method="post">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" name="username" required>
@@ -29,7 +29,7 @@
       </div>
       <div class="form-group">
         <label for="confirm-password">Confirm Password</label>
-        <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
+        <input type="password" class="form-control" id="confirm-password" required>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block">Sign Up</button>

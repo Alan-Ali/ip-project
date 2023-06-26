@@ -15,10 +15,10 @@ public class Views {
         return new ModelAndView("pages/tests/imageUploadTest");
     }
 
-
     @RequestMapping("/login")
     public ModelAndView login() {
         return new ModelAndView("pages/login");
+
     }
 
     @RequestMapping("/signup")
@@ -26,5 +26,18 @@ public class Views {
         return new ModelAndView("pages/signup");
     }
 
+    @RequestMapping("/greetings")
+    protected ModelAndView Greeting(){
+
+        ModelAndView model = new ModelAndView();
+
+        model.addObject("Greetings", "Welcome to the testing part of the project");
+        model.setViewName("test");
+
+        return model;
+    }
+
 
 }
+
+

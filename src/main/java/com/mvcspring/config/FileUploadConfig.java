@@ -1,4 +1,4 @@
-package com.mvcspring.controller.config;
+package com.mvcspring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

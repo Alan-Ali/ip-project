@@ -22,7 +22,7 @@ To change this template use File | Settings | File Templates.
 <body>
   <div class="container-">
     <h2>Login</h2>
-    <form>
+    <form action="" method="post">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" required>
