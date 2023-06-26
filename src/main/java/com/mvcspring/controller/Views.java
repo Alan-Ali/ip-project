@@ -26,13 +26,34 @@ public class Views {
         return new ModelAndView("pages/signup");
     }
 
+    @RequestMapping("/about")
+    public ModelAndView about() {
+        return new ModelAndView("pages/about");
+    }
+
+    @RequestMapping("/form")
+    public ModelAndView form() {
+        return new ModelAndView("pages/form");
+    }
+
+    @RequestMapping("/form")
+    public ModelAndView hotels() {
+        return new ModelAndView("pages/form");
+    }
+
+    @RequestMapping("/main")
+    public ModelAndView main() {
+        return new ModelAndView("pages/main");
+    }
+
+
     @RequestMapping("/greetings")
     protected ModelAndView Greeting(){
 
         ModelAndView model = new ModelAndView();
 
         model.addObject("Greetings", "Welcome to the testing part of the project");
-        model.setViewName("test");
+        model.setViewName("pages/tests/test");
 
         return model;
     }
