@@ -1,0 +1,32 @@
+.hotel-card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.hotel-card .image-container {
+    width: 100%;
+    height: 200px;
+}
+
+.hotel-card .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hotel-card .content {
+    padding: 10px;
+}
+
+.hotel-card .star-rating {
+    text-align: right;
+    color: gold;
+    margin-top: 10px;
+}
+
+.hotel-card .booking-button {
+    width: 100%;
+    margin-top: 10px;
+}

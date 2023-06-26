@@ -32,14 +32,14 @@ public class UserDAO implements CRUDDao {
     public User getById(int id) {
         String sql = "SELECT * FROM user WHERE id = ?";
         Object[] params = {id};
-        List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+        List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), params);
         return users.isEmpty() ? null : users.get(0);
     }
 
     @Override
     public Object add(User user) {
-        String query = "INSERT INTO user (username, email, password, isadmin) VALUES (?, ?, ?, ?);";
-        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin());
+        String query = "INSERT INTO user (username, email, password, isadmin, location) VALUES (?, ?, ?, ?, ?);";
+        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
 
         if (affectedRows > 0) {
             return user.getId();
@@ -51,8 +51,8 @@ public class UserDAO implements CRUDDao {
 
     @Override
     public Object update(User user) {
-        String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ? WHERE id = ?";
-        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin());
+        String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ?, location = ? WHERE id = ?";
+        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
         if (affectedRows > 0) {
             return user.getId();
         } else {

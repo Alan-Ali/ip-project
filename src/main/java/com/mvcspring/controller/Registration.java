@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,9 +18,14 @@ public class Registration {
 
 
     @GetMapping("/userLogin")
-    protected ModelAndView login(@RequestBody User user) {
+    protected ModelAndView login(HttpSession session, @ModelAttribute User user) {
 
-        ModelAndView model = null;
+        // Set attribute in session
+        session.setAttribute("login", user);
+
+        ModelAndView model = new ModelAndView("pages/login");
+        model.addObject(user);
+
 
         return model;
     }

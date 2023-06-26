@@ -36,10 +36,11 @@
       </div>
     </form>
     <div class="create-account">
-      <a href="login.html">Already have an account? Log In</a>
+      Already have an account? <a href="${pageContext.request.contextPath}/login">Log In</a>
     </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

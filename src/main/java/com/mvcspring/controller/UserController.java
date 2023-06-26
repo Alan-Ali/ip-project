@@ -47,7 +47,6 @@ public class UserController implements CRUDController {
                 return user;
             }
         }
-
         userDAO.add(user);
         return user;
     }
@@ -69,11 +68,14 @@ public class UserController implements CRUDController {
     @Override
     public ResponseEntity<Void> delete(@PathVariable int id) {
         User existingUser = userDAO.getById(id);
+
         if (existingUser != null) {
-            userDAO.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ;
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
+
+
+

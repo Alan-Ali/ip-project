@@ -4,57 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" 
-    rel="stylesheet"
-     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" 
-     crossorigin="anonymous">
-    <link rel="stylesheet" href="text1.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/main.css">
     <title>Document</title>
     <style>
-      /* Custom CSS for circular profile photo */
-      .profile-photo {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          overflow: hidden;
-      }
+
   </style>
 </head>
 <body>
-    
-      <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="main.jsp">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" >
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="hotels.jsp">Hotels </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.jsp">About </a>
-              </li>
-              
-              
-          </div>
-        </div>
-        <div class="navbar-collapse">
-          <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="profile.jsp">
-                      <div class="profile-photo">
-                          <img src="image/10.jpg" alt="Profile Photo" class="img-fluid">
-                      </div>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="login.html">Logout</a>
-              </li>
-          </ul>
-      </div>
-      </nav>
+
+    <jsp:include page="/pages/header.jsp"/>
+
       <div class="background-container ">
         <div>
             <span class="text1 h2 position-absolute ">Enjoy Your Dream Vacation </span>

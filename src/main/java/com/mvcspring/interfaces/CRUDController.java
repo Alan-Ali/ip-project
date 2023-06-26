@@ -15,7 +15,7 @@ public interface CRUDController<Type> {
 
     Type update(User user);
 
-    ResponseEntity<Void> delete(int id);
+    Type delete(int id);
 
 
 

@@ -1,0 +1,13 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.about-content {
+    background-color: rgba(0, 123, 255, 0.7);
+    padding: 30px;
+    text-align: center;
+    color: #fff;
+}

@@ -6,6 +6,16 @@ public class User {
     String email;
     String password;
     int isadmin = 0;
+    String location;
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+
 
     public String getPassword() {
         return password;

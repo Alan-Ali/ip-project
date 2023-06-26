@@ -36,7 +36,17 @@ public class Views {
         return new ModelAndView("pages/form");
     }
 
-    @RequestMapping("/form")
+    @RequestMapping("/profile")
+    public ModelAndView profile() {
+        return new ModelAndView("pages/profile");
+    }
+
+    @RequestMapping("/profile-edit")
+    public ModelAndView profileEdit() {
+        return new ModelAndView("pages/profileEdit");
+    }
+
+    @RequestMapping("/hotels")
     public ModelAndView hotels() {
         return new ModelAndView("pages/form");
     }
@@ -48,7 +58,7 @@ public class Views {
 
 
     @RequestMapping("/greetings")
-    protected ModelAndView Greeting(){
+    protected ModelAndView Greetings(){
 
         ModelAndView model = new ModelAndView();
 
