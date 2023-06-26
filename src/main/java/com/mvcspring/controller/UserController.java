@@ -68,9 +68,9 @@ public class UserController implements CRUDController {
     @Override
     public ResponseEntity<Void> delete(@PathVariable int id) {
         User existingUser = userDAO.getById(id);
-
         if (existingUser != null) {
-            return ;
+            userDAO.delete(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
