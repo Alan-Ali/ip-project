@@ -4,6 +4,7 @@ import com.mvcspring.interfaces.CRUDDao;
 import com.mvcspring.models.User;
 import com.mvcspring.utils.DatabaseConnection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -22,34 +23,58 @@ public class UserDAO implements CRUDDao {
 
     @Override
     public List<User> getAll() {
-        String query = "SELECT * FROM user";
-        return jdbcTemplate.query(query, new UserRowMapper());
+        String sql = "SELECT * FROM user";
+        List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+        return users.isEmpty() ? null : users;
     }
 
     @Override
     public User getById(int id) {
-        String query = "SELECT * FROM user WHERE id = ?";
-        return jdbcTemplate.queryForObject(query, new Object[]{id}, new UserRowMapper());
+        String sql = "SELECT * FROM user WHERE id = ?";
+        Object[] params = {id};
+        List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+        return users.isEmpty() ? null : users.get(0);
     }
 
     @Override
-    public void add(User user) {
+    public Object add(User user) {
         String query = "INSERT INTO user (username, email, password, isadmin) VALUES (?, ?, ?, ?);";
-        jdbcTemplate.update(query, user.getUsername(), user.getEmail(),user.getPassword(), user.getIsadmin());
+        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin());
+
+        if (affectedRows > 0) {
+            return user.getId();
+        } else {
+            // Handle update failure
+            return -1;
+        }
     }
 
     @Override
-    public void update(User user) {
-        String query = "UPDATE user SET username = ?, email = ?, password = ? WHERE id = ?";
-        jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword());
+    public Object update(User user) {
+        String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ? WHERE id = ?";
+        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin());
+        if (affectedRows > 0) {
+            return user.getId();
+        } else {
+            // Handle update failure
+            return -1;
+        }
     }
 
     @Override
-    public void delete(int id) {
+    public Object delete(int id) {
         String query = "DELETE FROM user WHERE id = ?";
-        jdbcTemplate.update(query, id);
+        int affectedRows = jdbcTemplate.update(query, id);
+
+        if (affectedRows > 0) {
+            return 1;
+        } else {
+            // Handle update failure
+            return -1;
+        }
     }
 
+    // MANUAL ROW MAPPER
     private static class UserRowMapper implements RowMapper<User> {
         @Override
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {

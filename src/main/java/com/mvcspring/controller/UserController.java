@@ -3,6 +3,7 @@ package com.mvcspring.controller;
 import com.mvcspring.DAO.UserDAO;
 import com.mvcspring.interfaces.CRUDController;
 import com.mvcspring.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,31 +19,22 @@ import java.util.Objects;
 public class UserController implements CRUDController {
 //    private final UserDAO userDAO = new UserDAO();
 
+    @Autowired
+    public UserController (){}
     private UserDAO userDAO;
 
     @GetMapping("/all")
     @Override
     public List<User> getAll() {
-        // Retrieve user data
-        List<User> users = userDAO.getAll();
-
-        // Set the appropriate headers
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        // Return the list of users with the headers
-        return users;
+        // IF TRUE WILL RETURN OBJECTS ELSE IT WILL RETURN NULL
+        return  userDAO.getAll();
     }
 
     @GetMapping("/get/{id}")
     @Override
-    public ResponseEntity<User> getById(@PathVariable int id) {
-        User user = userDAO.getById(id);
-        if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public User getById(@PathVariable int id) {
+        // IF TRUE WILL RETURN OBJECT ELSE IT WILL RETURN NULL
+        return userDAO.getById(id);
     }
 
     @PostMapping("/post")

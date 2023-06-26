@@ -11,9 +11,9 @@ public interface CRUDDao<Type> {
 
     Type getById(int id);
 
-    void add(User user);
+    Type add(User user);
 
-    void update(User user);
+    Type update(User user);
 
-    void delete(int id);
+    Type delete(int id);
 }

@@ -13,6 +13,8 @@ import java.util.Objects;
 
 @RestController
 public class Registration {
+    private UserController userController;
+
 
     @GetMapping("/userLogin")
     protected ModelAndView login(@RequestBody User user) {
@@ -24,9 +26,6 @@ public class Registration {
 
     @PostMapping("/userSignup")
     protected ModelAndView singup(@ModelAttribute User user) {
-
-
-        UserController userController = new UserController();
 
         User user_ =  userController.add(user);
         System.out.println(user_);
