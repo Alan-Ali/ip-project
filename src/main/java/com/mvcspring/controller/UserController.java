@@ -8,7 +8,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +18,12 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/user")
-public class UserController implements CRUDController {
+public class UserController implements CRUDController<User> {
 //    private final UserDAO userDAO = new UserDAO();
 
-    @Autowired
+
     public UserController (){}
+    @Autowired
     private UserDAO userDAO;
 
     @GetMapping("/all")
@@ -36,9 +39,9 @@ public class UserController implements CRUDController {
         // IF TRUE WILL RETURN OBJECT ELSE IT WILL RETURN NULL
         return userDAO.getById(id);
     }
-
-    @PostMapping("/post")
     @Override
+    @PostMapping("/post")
+
     public User add( @RequestBody User user) {
         List<User> users = userDAO.getAll();
         boolean created = false;
@@ -66,13 +69,13 @@ public class UserController implements CRUDController {
 
     @DeleteMapping("/delete/{id}")
     @Override
-    public ResponseEntity<Void> delete(@PathVariable int id) {
+    public int delete(@PathVariable int id) {
         User existingUser = userDAO.getById(id);
         if (existingUser != null) {
             userDAO.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return 1;
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return -1;
         }
     }
 }

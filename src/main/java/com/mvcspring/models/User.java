@@ -1,12 +1,12 @@
 package com.mvcspring.models;
 
 public class User {
-    int id;
-    String username;
-    String email;
-    String password;
-    int isadmin = 0;
-    String location;
+    private int id;
+    private String username;
+    private String email;
+    private String password;
+    private int isadmin = 0;
+    private String location = null;
     public String getLocation() {
         return location;
     }

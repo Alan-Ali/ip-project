@@ -11,9 +11,10 @@ public interface CRUDDao<Type> {
 
     Type getById(int id);
 
-    Type add(User user);
+    int add(Type object);
 
-    Type update(User user);
+    int update(Type object);
 
-    Type delete(int id);
+    int delete(int id);
+
 }

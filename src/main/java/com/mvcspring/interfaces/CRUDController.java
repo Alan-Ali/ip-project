@@ -1,6 +1,7 @@
 package com.mvcspring.interfaces;
 
 import com.mvcspring.models.User;
+import com.mvcspring.models.UserImage;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -11,11 +12,11 @@ public interface CRUDController<Type> {
 
     Type getById(int id);
 
-    Type add(User user);
+    Type add(Type user);
 
-    Type update(User user);
+    Type update(Type user);
 
-    Type delete(int id);
+    int delete(int id);
 
 
 

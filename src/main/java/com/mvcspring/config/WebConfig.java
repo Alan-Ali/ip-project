@@ -2,6 +2,7 @@ package com.mvcspring.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -18,6 +19,8 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
+@ComponentScan("com.mvcspring.DAO")
+@ComponentScan("com.mvcspring.controller")
 public class WebConfig implements WebMvcConfigurer {
 
 //    @Override

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.mvcspring.models.User" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 6/26/2023
@@ -6,6 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+<%
+	User user = (User) session.getAttribute("login");
+    if(user != null){
+        user
+	}
+%>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
 	<div class="container-fluid">

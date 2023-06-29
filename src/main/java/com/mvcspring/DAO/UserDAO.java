@@ -3,23 +3,22 @@ package com.mvcspring.DAO;
 import com.mvcspring.interfaces.CRUDDao;
 import com.mvcspring.models.User;
 import com.mvcspring.utils.DatabaseConnection;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 
-@Repository
-public class UserDAO implements CRUDDao {
+//@Repository
+@Service
+public class UserDAO implements CRUDDao<User> {
     private final JdbcTemplate jdbcTemplate = new JdbcTemplate(DatabaseConnection.dataSource());
 
-    @Autowired
-    public UserDAO() {}
+//    public UserDAO() {}
 
     @Override
     public List<User> getAll() {
@@ -37,7 +36,7 @@ public class UserDAO implements CRUDDao {
     }
 
     @Override
-    public Object add(User user) {
+    public int add(User user) {
         String query = "INSERT INTO user (username, email, password, isadmin, location) VALUES (?, ?, ?, ?, ?);";
         int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
 
@@ -50,7 +49,7 @@ public class UserDAO implements CRUDDao {
     }
 
     @Override
-    public Object update(User user) {
+    public int update(User user) {
         String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ?, location = ? WHERE id = ?";
         int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
         if (affectedRows > 0) {
@@ -62,7 +61,7 @@ public class UserDAO implements CRUDDao {
     }
 
     @Override
-    public Object delete(int id) {
+    public int delete(int id) {
         String query = "DELETE FROM user WHERE id = ?";
         int affectedRows = jdbcTemplate.update(query, id);
 

@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/main.css">
     <title>Document</title>
     <style>
-
+        body{
+            background-image: url(${pageContext.request.contextPath}/resources/images/2.jpg);
+        }
   </style>
 </head>
 <body>
-
-    <jsp:include page="/pages/header.jsp"/>
+    
+<jsp:include page="/pages/header.jsp" />
 
       <div class="background-container ">
         <div>
@@ -32,47 +33,48 @@
            
             <div class="card-container">
                 <div class="card">
-                    <img class="card-img-top" src="image/9.jpg" width="400px" height="250px" alt="Card image cap">
+                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/abu-sana.jpg" width="400px" height="250px" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Push Up</h5>
-                      <p class="card-text">Primarily target the chest, shoulders, and triceps muscles. They are performed by lying 
-                        face down on the ground with your hands placed shoulder-width apart and your feet together.</p>
-                      <a href="form.jsp" class="btn btn-primary">BOOK</a>
+                      <h5 class="card-title">Abu Sana</h5>
+                      <p class="card-text">Set 10 km from Chavi Land, Abu Sanaa Hotel offers 4-star accommodation in As Sulaymānīyah and has a bar.</p>
+                      <a href="${pageContext.request.contextPath}/form" class="btn btn-primary">BOOK</a>
                     </div>
                   </div>
                   <div class="card">
-                    <img class="card-img-top" src="image/10.jpg"width="400px" height="250px" alt="Card image cap">
+                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/grand2.jpg" width="400px" height="250px" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Calf Raises</h5>
-                      <p class="card-text">Calf raises are a type of exercise that involve raising your heels off the ground while keeping your toes on the ground. 
-                        This movement specifically targets your calf muscles, which are located at the back of your lower leg</p>
-                      <a href="form.jsp" class="btn btn-primary">BOOK</a>
+                      <h5 class="card-title">Grand Millennium</h5>
+                      <p class="card-text">The Grand Millennium Sulaimani Hotel is a 5-star hotel, offering free WiFi in all areas,
+                        spa and fitness facilities, bars and restaurants serving international cuisine. It features an indoor pool.</p>
+                      <a href="${pageContext.request.contextPath}/form" class="btn btn-primary">BOOK</a>
                     </div>
                   </div>
                   
                   <div class="card">
-                    <img class="card-img-top" src="image/6.jpg"width="400px" height="250px" alt="Card image cap">
+                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/titanic.webp" width="400px" height="250px" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Squat</h5>
-                      <p class="card-text">Squats are considered a vital exercise for increasing the strength and size of the lower body muscles as well as developing core strength.</p>
-                      <a href="form.jsp" class="btn btn-primary">BOOK</a>
+                      <h5 class="card-title">Titanic Hotel & SPA</h5>
+                      <p class="card-text">Located in Al Sulaimaniyah-Kurdistan, Titanic Hotel and spa offers ultimate accommodation, 
+                        excellent meals with live music at dinner and special events. Free private parking is available on site.</p>
+                      <a href="${pageContext.request.contextPath}/form" class="btn btn-primary">BOOK</a>
                     </div>
                   </div>
                   <div class="card">
-                    <img class="card-img-top" src="image/5.jpg"width="400px" height="250px" alt="Card image cap">
+                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/rotana.webp" width="400px" height="250px" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Wall Sit</h5>
-                      <p class="card-text">Wall Sit is a simple and effective lower body exercise that primarily targets the quadriceps, hamstrings, and gluteal muscles.</p>
-                      <a href="form.jsp" class="btn btn-primary">BOOK </a>
+                      <h5 class="card-title">Rotana</h5>
+                      <p class="card-text">Situated in As Sulaymānīyah, 6.2 km from Chavi Land, Slemani Rotana features accommodation with a seasonal outdoor swimming pool,
+                         free private parking, a fitness centre and a restaurant.</p>
+                      <a href="${pageContext.request.contextPath}/form" class="btn btn-primary">BOOK </a>
                     </div>
                   </div>
                   <div class="card">
-                    <img class="card-img-top" src="image/7.jpg"width="400px" height="250px" alt="Card image cap">
+                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/ramada.jpg" width="400px" height="250px" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Sit Up</h5>
-                      <p class="card-text">Situps are classic abdominal exercises done by lying on your back and lifting your torso. They use your body weight to strengthen
-                         and tone the core-stabilizing abdominal muscles.</p>
-                      <a href="form.jsp" class="btn btn-primary">BOOK</a>
+                      <h5 class="card-title">Ramada</h5>
+                      <p class="card-text">Located in central Sulaymaniyah, this property offers modern accommodations.
+                         It offers complimentary Wi-Fi in all areas, a free indoor swimming pool and fitness centre.</p>
+                      <a href="${pageContext.request.contextPath}/form" class="btn btn-primary">BOOK</a>
                     </div>
                   </div>
             </div>
