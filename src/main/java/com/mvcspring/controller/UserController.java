@@ -3,7 +3,10 @@ package com.mvcspring.controller;
 import com.mvcspring.DAO.UserDAO;
 import com.mvcspring.interfaces.CRUDController;
 import com.mvcspring.models.User;
+import com.mvcspring.models.UserImage;
+import com.mvcspring.utils.FileUploadPath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,10 +15,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
+@Component
 @Controller
 @RequestMapping("/user")
 public class UserController implements CRUDController<User> {
@@ -23,10 +32,10 @@ public class UserController implements CRUDController<User> {
 
 
     public UserController (){}
-    @Autowired
-    private UserDAO userDAO;
+//    @Autowired
+    private final UserDAO userDAO = new UserDAO();
 
-    @GetMapping("/all")
+    @GetMapping("/get-all")
     @Override
     public List<User> getAll() {
         // IF TRUE WILL RETURN OBJECTS ELSE IT WILL RETURN NULL
@@ -41,29 +50,27 @@ public class UserController implements CRUDController<User> {
     }
     @Override
     @PostMapping("/post")
-
-    public User add( @RequestBody User user) {
+    public int add( @ModelAttribute User object) {
         List<User> users = userDAO.getAll();
-        boolean created = false;
         for(User user_ : users){
-            if(Objects.equals(user_.getEmail(), user.getEmail())){
-                return user;
+            if(Objects.equals(user_.getEmail(), object.getEmail())){
+                return -1;
             }
         }
-        userDAO.add(user);
-        return user;
+        userDAO.add(object);
+        return 1;
     }
 
     @PutMapping("/update")
     @Override
-    public User update(@RequestBody User user) {
-        User existingUser = userDAO.getById(user.getId());
+    public int update(@ModelAttribute User object) {
+        User existingUser = userDAO.getById(object.getId());
         if (existingUser != null) {
-            user.setId(user.getId());
-            userDAO.update(user);
-            return user;
+            object.setId(object.getId());
+            userDAO.update(object);
+            return 1;
         } else {
-            return null;
+            return -1;
         }
     }
 
@@ -78,6 +85,65 @@ public class UserController implements CRUDController<User> {
             return -1;
         }
     }
+
+    @PostMapping("/updateWithImage")
+    public ModelAndView update(@ModelAttribute User userObject,@RequestParam("file") MultipartFile file) {
+
+            try {
+
+
+                if(!file.isEmpty()) {
+                    // Save the file to a location or process it
+
+                    String[] split = Objects.requireNonNull(file.getOriginalFilename()).split("\\.");
+                    System.out.println(Arrays.toString(split));
+
+                    UUID uuid = UUID.randomUUID();
+                    String imageName = uuid.toString();
+
+                    File newFile = new File(FileUploadPath.path(),imageName+"."+ split[split.length - 1]);
+
+                    file.transferTo(newFile);
+                    System.out.println(userObject.getId());
+                    UserImage userImage = new UserImage();
+                    userImage.setUser_id(userObject.getId());
+                    userImage.setImage_ext(split[split.length - 1]);
+                    userImage.setImage_name(imageName);
+
+                    System.out.println(userImage);
+                    UserImageController userImageController = new UserImageController();
+
+                    List<UserImage> userImages = userImageController.getAll();
+
+                    boolean userExists = false;
+                    for(UserImage userImage_: userImages){
+                        if(userImage_.getUser_id() == userObject.getId()){
+                            userImageController.update(userImage);
+                            userExists = true;
+                            break;
+                        }
+                    }
+
+                    if(!userExists){
+                        userImageController.add(userImage);
+                    }
+
+//                    System.out.println(file);
+
+                }
+
+                User existingUser = userDAO.getById(userObject.getId());
+                if (existingUser != null) {
+//                    userObject.setId(userObject.getId());
+                    userDAO.update(userObject);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle the exception
+            }
+        return new ModelAndView("pages/profileEdit");
+    }
+
 }
 
 

@@ -52,10 +52,10 @@
     <div class="form-container">
       <h1 class="text-center">Edit Profile</h1>
 
-      <form action="process_form.php" method="POST" enctype="multipart/form-data">
+      <form action="${pageContext.request.contextPath}/user/updateWithImage" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="name" class="form-label">Name:</label>
-          <input type="text" id="name" name="name" class="form-control" required>
+          <input type="text" id="name" name="username" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -70,9 +70,9 @@
 
         <div class="mb-3">
           <label for="photo" class="form-label">Upload Photo:</label>
-          <input type="file" id="photo" name="photo" class="form-control">
+          <input type="file" id="photo" name="file" class="form-control">
         </div>
-
+        <input type="hidden" name="id" value="${login.getId()}">
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
           <input type="password" id="password" name="password" class="form-control" required>

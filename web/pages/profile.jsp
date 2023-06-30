@@ -1,3 +1,4 @@
+<%@ page import="com.mvcspring.models.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,11 @@
 </head>
 <body>
 
-    <jsp:include page="/pages/header.jsp"/>
 
-    <div class="container">
+<jsp:include page="/pages/header.jsp"/>
+
+
+    <div class="container m-5">
         <!-- Profile section -->
         <section id="profile-section">
             <h1>User Profile</h1>
@@ -22,25 +25,30 @@
                     <img src="${pageContext.request.contextPath}/resources/images/1.jpg" alt="User Photo" class="img-fluid">
                 </div>
                 <div class="col-md-8">
-                    <h2>Name: John Doe</h2>
-                    <p>Email: johndoe@example.com</p>
-                    <p>Location: New York</p>
+                    <h2>Name: ${login.getUsername()}</h2>
+                    <p>Email: ${login.getEmail()}</p>
+                    <p>Location: ${login.getLocation()}</p>
+                    <a href="${pageContext.request.contextPath}/profile-edit" class="d-block">
+                        <button class="btn btn-primary">
+                            Edit
+                        </button>
+                    </a>
                     <!-- Add more user information as needed -->
                 </div>
             </div>
         </section>
 
         <!-- Hotel booking section -->
-        <section id="hotel-booking-section mt-">
+        <section id="hotel-booking-section m-5">
             <h2 class="mt-5">My Bookings</h2>
             <div class="row mt-5">
                 <!-- Hotel 1 -->
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/images/9.jpg" class="card-img-top w-100 " alt="Hotel A">
+                        <img src="${pageContext.request.contextPath}/resources/images/abu-sana.jpg" class="card-img-top w-100 " alt="abu-sana">
                         <div class="card-body">
-                            <h3 class="card-title">Hotel A</h3>
-                            <p class="card-text">Location: City A</p>
+                            <h3 class="card-title">Abu Sana</h3>
+                            <p class="card-text">Location: sulaimani</p>
                             <p class="card-text">Price: $100 per night</p>
                             <!-- Add more hotel information as needed -->
                             <!-- Add a button to book this hotel -->
@@ -51,10 +59,10 @@
                 <!-- Hotel 2 -->
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/images/10.jpg" class="card-img-top w-100 h-100" alt="Hotel B">
+                        <img src="${pageContext.request.contextPath}/resources/images/grand2.jpg" class="card-img-top w-100 h-100" alt="grand-millennium">
                         <div class="card-body">
-                            <h3 class="card-title">Hotel B</h3>
-                            <p class="card-text">Location: City B</p>
+                            <h3 class="card-title">Grand Millennium</h3>
+                            <p class="card-text">Location: sulaimani</p>
                             <p class="card-text">Price: $150 per night</p>
                             <!-- Add more hotel information as needed -->
                             <!-- Add a button to book this hotel -->
@@ -67,8 +75,8 @@
         </section>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

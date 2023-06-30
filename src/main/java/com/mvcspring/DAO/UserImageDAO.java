@@ -6,12 +6,17 @@ import com.mvcspring.models.UserImage;
 import com.mvcspring.utils.DatabaseConnection;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UserImageDAO implements CRUDDao<UserImage> {
 
     private final JdbcTemplate jdbcTemplate = new JdbcTemplate(DatabaseConnection.dataSource());
+
+//    public UserImageDAO (){}
 
     @Override
     public List<UserImage> getAll() {
@@ -30,8 +35,8 @@ public class UserImageDAO implements CRUDDao<UserImage> {
 
     @Override
     public int add(UserImage userimage) {
-        String query = "INSERT INTO userimage (image_id, user_id, image_ext, image_name) VALUES (?, ?, ?, ?);";
-        int affectedRows = jdbcTemplate.update(query, userimage.getImage_id(), userimage.getUser_id(),
+        String query = "INSERT INTO userimage (user_id, image_ext, image_name) VALUES (?, ?, ?);";
+        int affectedRows = jdbcTemplate.update(query, userimage.getUser_id(),
                 userimage.getImage_ext(), userimage.getImage_name());
 
         if (affectedRows > 0) {
@@ -44,8 +49,8 @@ public class UserImageDAO implements CRUDDao<UserImage> {
 
     @Override
     public int update(UserImage userImage) {
-        String query = "UPDATE userimage SET image_id = ?, user_id = ?, image_ext = ?, image_name = ? WHERE user_id = ?";
-        int affectedRows = jdbcTemplate.update(query, userImage.getImage_id(), userImage.getUser_id(), userImage.getImage_ext(), userImage.getImage_name());
+        String query = "UPDATE userimage SET user_id = ?, image_ext = ?, image_name = ? WHERE user_id = " + userImage.getUser_id();
+        int affectedRows = jdbcTemplate.update(query, userImage.getUser_id(), userImage.getImage_ext(), userImage.getImage_name());
         if (affectedRows > 0) {
             return userImage.getImage_id();
         } else {

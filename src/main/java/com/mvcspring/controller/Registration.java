@@ -17,34 +17,38 @@ public class Registration {
     private UserController userController;
 
     @GetMapping("/userLogin")
-    protected ModelAndView login(HttpSession session, @ModelAttribute User user) {
+    protected ModelAndView login(@ModelAttribute User user, HttpSession session) {
 
 
         List<User> users = userController.getAll();
         User foundUser = null;
-        for(User user_ : users){
-            if(Objects.equals(user_.getEmail(), user.getEmail())){
+        for (User user_ : users) {
+            if (Objects.equals(user_.getEmail(), user.getEmail())) {
                 foundUser = user_;
-                break;
+                // Set attribute in session
+                session.setAttribute("login", foundUser);
+                return new ModelAndView("pages/main");
             }
         }
 
-        // Set attribute in session
-        session.setAttribute("login", foundUser);
+        System.out.println("not found");
 
-        ModelAndView model = new ModelAndView("pages/main");
-        System.out.println("came here");
-        return model;
+
+        return new ModelAndView("pages/login");
     }
 
     @PostMapping("/userSignup")
     protected ModelAndView singup(@ModelAttribute User user) {
 
-        User user_ = userController.add(user);
-        System.out.println(user_);
+        ModelAndView model = null;
 
-        ModelAndView model = new ModelAndView("pages/login");
-        model.addObject(user);
+        int user_ = userController.add(user);
+
+        if(user_ > 0){
+            model = new ModelAndView("pages/login");
+        }else{
+            model = new ModelAndView("pages/signup");
+        }
 
         return model;
     }

@@ -6,15 +6,16 @@ import com.mvcspring.utils.DatabaseConnection;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 
-//@Repository
-@Service
+
+@Repository
 public class UserDAO implements CRUDDao<User> {
     private final JdbcTemplate jdbcTemplate = new JdbcTemplate(DatabaseConnection.dataSource());
 
@@ -50,7 +51,7 @@ public class UserDAO implements CRUDDao<User> {
 
     @Override
     public int update(User user) {
-        String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ?, location = ? WHERE id = ?";
+        String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ?, location = ? WHERE id = " + user.getId();
         int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
         if (affectedRows > 0) {
             return user.getId();

@@ -13,4 +13,14 @@ public class FileUploadPath {
 //        return ;
     }
 
+    public static String directoryName() {
+        // ALAN'S FILE UPLOAD DIRECTORY
+        return "/ip_project";
+        // KARO'S FILE UPLOAD DIRECTORY
+//        return ;
+        // HALA'S FILE UPLOAD DIRECTORY
+//        return ;
+    }
+
+
 }

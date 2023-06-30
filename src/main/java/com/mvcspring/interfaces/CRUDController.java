@@ -1,23 +1,22 @@
 package com.mvcspring.interfaces;
 
-import com.mvcspring.models.User;
-import com.mvcspring.models.UserImage;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 public interface CRUDController<Type> {
+
+    @GetMapping("/get-all")
     List<Type> getAll();
 //    List<Type> getAll();
+    @GetMapping("/get/{id}")
+    Type getById(@PathVariable int id);
+    @PostMapping("/post")
+    int add(Type object);
+    @PutMapping("/update")
+    int update(Type object);
 
-    Type getById(int id);
-
-    Type add(Type user);
-
-    Type update(Type user);
-
-    int delete(int id);
-
-
+    @DeleteMapping("/delete/{id}")
+    int delete( @PathVariable int id);
 
 }

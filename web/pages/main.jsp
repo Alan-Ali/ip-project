@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-    
+
 <jsp:include page="/pages/header.jsp" />
 
       <div class="background-container ">
