@@ -8,12 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/user/profile.css">
 </head>
 <body>
 
 
-<jsp:include page="/pages/header.jsp"/>
+<jsp:include page="/pages/user/header.jsp"/>
 
 
     <div class="container m-5">

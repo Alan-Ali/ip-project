@@ -6,47 +6,21 @@
   <title>Edit Profile</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/profileEdit.css">
   <style>
     body {
-      background-image: url('image/9.jpg');
+      background-image: url('${pageContext.request.contextPath}/resources/images/9.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-color: #f2f2f2;
     }
 
-    .form-container {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 50px;
-    }
 
-    .form-label {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .form-control {
-      border-radius: 4px;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 12px;
-      background-color: #4CAF50;
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
 
-    <jsp:include page="/pages/header.jsp"/>
+    <jsp:include page="/pages/user/header.jsp"/>
 
   <div class="container">
     <div class="form-container">

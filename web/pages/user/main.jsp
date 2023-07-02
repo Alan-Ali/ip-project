@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/user/main.css">
     <title>Document</title>
     <style>
         body{
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<jsp:include page="/pages/header.jsp" />
+<jsp:include page="/pages/user/header.jsp" />
 
       <div class="background-container ">
         <div>

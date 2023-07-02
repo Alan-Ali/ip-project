@@ -5,15 +5,8 @@ import com.mvcspring.interfaces.CRUDController;
 import com.mvcspring.models.User;
 import com.mvcspring.models.UserImage;
 import com.mvcspring.utils.FileUploadPath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -93,19 +86,20 @@ public class UserController implements CRUDController<User> {
 
 
                 if(!file.isEmpty()) {
-                    // Save the file to a location or process it
 
+                    // split the original name
                     String[] split = Objects.requireNonNull(file.getOriginalFilename()).split("\\.");
                     System.out.println(Arrays.toString(split));
 
+                    // Creating random id
                     UUID uuid = UUID.randomUUID();
                     String imageName = uuid.toString();
 
+                    //
                     File newFile = new File(FileUploadPath.path(),imageName+"."+ split[split.length - 1]);
+                    UserImage userImage = new UserImage();
 
                     file.transferTo(newFile);
-                    System.out.println(userObject.getId());
-                    UserImage userImage = new UserImage();
                     userImage.setUser_id(userObject.getId());
                     userImage.setImage_ext(split[split.length - 1]);
                     userImage.setImage_name(imageName);
@@ -128,20 +122,19 @@ public class UserController implements CRUDController<User> {
                         userImageController.add(userImage);
                     }
 
-//                    System.out.println(file);
 
                 }
 
                 User existingUser = userDAO.getById(userObject.getId());
                 if (existingUser != null) {
-//                    userObject.setId(userObject.getId());
                     userDAO.update(userObject);
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
                 // Handle the exception
             }
-        return new ModelAndView("pages/profileEdit");
+        return new ModelAndView("pages/user/profileEdit");
     }
 
 }

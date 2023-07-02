@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/form.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/user/form.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -16,7 +17,7 @@
 </head>
 <body>
 
-    <jsp:include page="/pages/header.jsp"/>
+    <jsp:include page="/pages/user/header.jsp"/>
 
     <div class="container">
         <div class="form-container">

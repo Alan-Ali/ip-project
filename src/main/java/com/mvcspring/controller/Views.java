@@ -16,50 +16,67 @@ public class Views {
         return new ModelAndView("pages/tests/imageUploadTest");
     }
 
+
+
+    // USER PAGES
     @RequestMapping("/login")
     public ModelAndView login() {
-        return new ModelAndView("pages/login");
-
+        return new ModelAndView("pages/user/login");
     }
-
     @RequestMapping("/signup")
     public ModelAndView signup() {
-        return new ModelAndView("pages/signup");
+        return new ModelAndView("pages/user/signup");
     }
 
     @RequestMapping("/about")
     public ModelAndView about() {
-        return new ModelAndView("pages/about");
+        return new ModelAndView("pages/user/about");
     }
 
     @RequestMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("pages/form");
+        return new ModelAndView("pages/user/form");
     }
 
     @RequestMapping("/profile")
     public ModelAndView profile() {
-        return new ModelAndView("pages/profile");
+        return new ModelAndView("pages/user/profile");
     }
 
     @RequestMapping("/profile-edit")
     public ModelAndView profileEdit() {
-        return new ModelAndView("pages/profileEdit");
+        return new ModelAndView("pages/user/profileEdit");
     }
 
     @RequestMapping("/hotels")
     public ModelAndView hotels() {
-        return new ModelAndView("pages/form");
+        return new ModelAndView("pages/user/form");
     }
 
     @RequestMapping("/main")
     public ModelAndView main() {
-        return new ModelAndView("pages/main");
+        return new ModelAndView("pages/user/main");
     }
     @RequestMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
-        return new ModelAndView("pages/login");
+        return new ModelAndView("pages/user/login");
+    }
+
+    // ADMIN PAGES
+    @RequestMapping("/admin-login")
+    public ModelAndView adminLogin() {
+        return new ModelAndView("pages/admin/adminLogin");
+    }
+
+    @RequestMapping("/admin-add-hotel")
+    public ModelAndView adminAddHotel() {
+        return new ModelAndView("pages/admin/adminAddHotel");
+    }
+
+    @RequestMapping("/user-manager")
+    public ModelAndView userManager() {
+        return new ModelAndView("pages/admin/manager");
     }
 
 

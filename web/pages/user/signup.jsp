@@ -3,7 +3,7 @@
 <head>
   <title>Hotel Booking - Sign Up</title>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pages/signup.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pages/user/signup.css">
 
   <style>
     body {

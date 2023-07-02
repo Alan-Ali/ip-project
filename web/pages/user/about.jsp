@@ -1,10 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
   <title>About Page</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/about.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/user/about.css">
   <style>
     body {
       background-color: #f1f5f8;
@@ -12,7 +13,7 @@
   </style>
 </head>
 <body>
-<jsp:include page="/pages/header.jsp"/>
+<jsp:include page="/pages/user/header.jsp"/>
 
   <div class="about-container ">
     <div class="about-content rounded-5">

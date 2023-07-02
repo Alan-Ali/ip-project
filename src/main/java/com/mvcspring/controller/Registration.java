@@ -27,14 +27,14 @@ public class Registration {
                 foundUser = user_;
                 // Set attribute in session
                 session.setAttribute("login", foundUser);
-                return new ModelAndView("pages/main");
+                return new ModelAndView("pages/user/main");
             }
         }
 
         System.out.println("not found");
 
 
-        return new ModelAndView("pages/login");
+        return new ModelAndView("pages/user/login");
     }
 
     @PostMapping("/userSignup")
@@ -45,9 +45,9 @@ public class Registration {
         int user_ = userController.add(user);
 
         if(user_ > 0){
-            model = new ModelAndView("pages/login");
+            model = new ModelAndView("pages/user/login");
         }else{
-            model = new ModelAndView("pages/signup");
+            model = new ModelAndView("pages/user/signup");
         }
 
         return model;

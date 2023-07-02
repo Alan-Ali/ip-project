@@ -12,7 +12,7 @@ To change this template use File | Settings | File Templates.
 <head>
   <title>Hotel Booking - Login</title>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pages/login.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pages/user/login.css">
   <style>
     body{
       background-image: url("${pageContext.request.contextPath}/resources/images/9.jpg");
