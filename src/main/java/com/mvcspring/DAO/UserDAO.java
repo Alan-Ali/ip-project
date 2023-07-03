@@ -38,8 +38,8 @@ public class UserDAO implements CRUDDao<User> {
 
     @Override
     public int add(User user) {
-        String query = "INSERT INTO user (username, email, password, isadmin, location) VALUES (?, ?, ?, ?, ?);";
-        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
+        String sql = "INSERT INTO user (username, email, password, isadmin, location) VALUES (?, ?, ?, ?, ?);";
+        int affectedRows = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
 
         if (affectedRows > 0) {
             return user.getId();
@@ -51,8 +51,8 @@ public class UserDAO implements CRUDDao<User> {
 
     @Override
     public int update(User user) {
-        String query = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ?, location = ? WHERE id = " + user.getId();
-        int affectedRows = jdbcTemplate.update(query, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
+        String sql = "UPDATE user SET username = ?, email = ?, password = ?, isadmin = ?, location = ? WHERE id = " + user.getId();
+        int affectedRows = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), user.getIsadmin(), user.getLocation());
         if (affectedRows > 0) {
             return user.getId();
         } else {
@@ -63,11 +63,11 @@ public class UserDAO implements CRUDDao<User> {
 
     @Override
     public int delete(int id) {
-        String query = "DELETE FROM user WHERE id = ?";
-        int affectedRows = jdbcTemplate.update(query, id);
+        String sql = "DELETE FROM user WHERE id = ?";
+        int affectedRows = jdbcTemplate.update(sql, id);
 
         if (affectedRows > 0) {
-            return 1;
+            return affectedRows;
         } else {
             // Handle update failure
             return -1;
@@ -75,14 +75,14 @@ public class UserDAO implements CRUDDao<User> {
     }
 
     // MANUAL ROW MAPPER
-    private static class UserRowMapper implements RowMapper<User> {
-        @Override
-        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-            User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("name"));
-            // Set other properties as needed
-            return user;
-        }
-    }
+//    private static class UserRowMapper implements RowMapper<User> {
+//        @Override
+//        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+//            User user = new User();
+//            user.setId(rs.getInt("id"));
+//            user.setUsername(rs.getString("name"));
+//            // Set other properties as needed
+//            return user;
+//        }
+//    }
 }

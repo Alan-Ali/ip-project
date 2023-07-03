@@ -1,6 +1,7 @@
 package com.mvcspring.controller;
 
 
+import com.mvcspring.controller.root.UserController;
 import com.mvcspring.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class Registration {
     @Autowired
     private UserController userController;
 
-    @GetMapping("/userLogin")
+    @GetMapping("/user-login")
     protected ModelAndView login(@ModelAttribute User user, HttpSession session) {
 
 
@@ -37,7 +38,7 @@ public class Registration {
         return new ModelAndView("pages/user/login");
     }
 
-    @PostMapping("/userSignup")
+    @PostMapping("/user-signup")
     protected ModelAndView singup(@ModelAttribute User user) {
 
         ModelAndView model = null;
@@ -49,6 +50,23 @@ public class Registration {
         }else{
             model = new ModelAndView("pages/user/signup");
         }
+
+        return model;
+    }
+
+    @GetMapping("/admin-login")
+    protected ModelAndView adminLogin(@ModelAttribute User user){
+        ModelAndView model = null;
+
+        User user_ = userController.getById(user.getId());
+
+        if(user_ != null && user_.getIsadmin() == 1 && Objects.equals(user_.getEmail(), user.getEmail()) && Objects.equals(user_.getPassword(), user.getPassword())){
+            model = new ModelAndView("pages/admin/manager");
+            model.addObject("adminLogin", user_);
+        }else{
+            model = new ModelAndView("pages/admin/adminLogin");
+        }
+
 
         return model;
     }

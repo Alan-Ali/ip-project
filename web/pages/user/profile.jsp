@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Add more hotels as needed -->
+                <!-- Add more Hotels as needed -->
             </div>
         </section>
     </div>

@@ -12,10 +12,9 @@ public interface CRUDController<Type> {
     @GetMapping("/get/{id}")
     Type getById(@PathVariable int id);
     @PostMapping("/post")
-    int add(Type object);
+    int add(@ModelAttribute Type object);
     @PutMapping("/update")
-    int update(Type object);
-
+    int update(@ModelAttribute Type object);
     @DeleteMapping("/delete/{id}")
     int delete( @PathVariable int id);
 

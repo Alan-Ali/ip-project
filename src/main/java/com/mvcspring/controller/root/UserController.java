@@ -1,4 +1,4 @@
-package com.mvcspring.controller;
+package com.mvcspring.controller.root;
 
 import com.mvcspring.DAO.UserDAO;
 import com.mvcspring.interfaces.CRUDController;

@@ -35,8 +35,8 @@ public class UserImageDAO implements CRUDDao<UserImage> {
 
     @Override
     public int add(UserImage userimage) {
-        String query = "INSERT INTO userimage (user_id, image_ext, image_name) VALUES (?, ?, ?);";
-        int affectedRows = jdbcTemplate.update(query, userimage.getUser_id(),
+        String sql = "INSERT INTO userimage (user_id, image_ext, image_name) VALUES (?, ?, ?);";
+        int affectedRows = jdbcTemplate.update(sql, userimage.getUser_id(),
                 userimage.getImage_ext(), userimage.getImage_name());
 
         if (affectedRows > 0) {
@@ -49,8 +49,8 @@ public class UserImageDAO implements CRUDDao<UserImage> {
 
     @Override
     public int update(UserImage userImage) {
-        String query = "UPDATE userimage SET user_id = ?, image_ext = ?, image_name = ? WHERE user_id = " + userImage.getUser_id();
-        int affectedRows = jdbcTemplate.update(query, userImage.getUser_id(), userImage.getImage_ext(), userImage.getImage_name());
+        String sql = "UPDATE userimage SET user_id = ?, image_ext = ?, image_name = ? WHERE user_id = " + userImage.getUser_id();
+        int affectedRows = jdbcTemplate.update(sql, userImage.getUser_id(), userImage.getImage_ext(), userImage.getImage_name());
         if (affectedRows > 0) {
             return userImage.getImage_id();
         } else {
@@ -61,11 +61,11 @@ public class UserImageDAO implements CRUDDao<UserImage> {
 
     @Override
     public int delete(int id) {
-        String query = "DELETE FROM userimage WHERE user_id = ?";
-        int affectedRows = jdbcTemplate.update(query, id);
+        String sql = "DELETE FROM userimage WHERE user_id = ?";
+        int affectedRows = jdbcTemplate.update(sql, id);
 
         if (affectedRows > 0) {
-            return 1;
+            return affectedRows;
         } else {
             // Handle update failure
             return -1;

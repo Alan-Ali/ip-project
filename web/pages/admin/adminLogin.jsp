@@ -14,7 +14,7 @@
 <body>
 <div class="container-">
   <h2>Login</h2>
-  <form action="${pageContext.request.contextPath}/userLogin" method="get">
+  <form action="${pageContext.request.contextPath}/user-login" method="get">
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email" name="email" required>

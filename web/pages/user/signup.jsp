@@ -14,7 +14,7 @@
 <body>
   <div class="container">
     <h2>Sign Up</h2>
-    <form action="${pageContext.request.contextPath}/userSignup" method="post">
+    <form action="${pageContext.request.contextPath}/user-signup" method="post">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" name="username" required>
