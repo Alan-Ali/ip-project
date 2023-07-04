@@ -27,13 +27,7 @@
 	</div>
 	<div class="navbar-collapse">
 		<ul class="navbar-nav me-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="profile.html">
-					<div class="profile-photo">
-						<img src="image/10.jpg" alt="Profile Photo" class="img-fluid">
-					</div>
-				</a>
-			</li>
+
 			<li class="nav-item">
 				<a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
 			</li>

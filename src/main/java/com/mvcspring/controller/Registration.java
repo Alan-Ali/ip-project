@@ -32,9 +32,6 @@ public class Registration {
             }
         }
 
-        System.out.println("not found");
-
-
         return new ModelAndView("pages/user/login");
     }
 
@@ -58,15 +55,25 @@ public class Registration {
     protected ModelAndView adminLogin(@ModelAttribute User user){
         ModelAndView model = null;
 
-        User user_ = userController.getById(user.getId());
+        List<User> users = userController.getAll();
 
-        if(user_ != null && user_.getIsadmin() == 1 && Objects.equals(user_.getEmail(), user.getEmail()) && Objects.equals(user_.getPassword(), user.getPassword())){
-            model = new ModelAndView("pages/admin/manager");
-            model.addObject("adminLogin", user_);
-        }else{
-            model = new ModelAndView("pages/admin/adminLogin");
+
+        if(!users.isEmpty()){
+
+            for (User user_ : users) {
+                System.out.println(user_.getIsadmin());
+                if(user_.getIsadmin() == 1 && user_.getEmail().equals(user.getEmail()) && user_.getPassword().equals(user.getPassword()) ){
+
+                    // Set attribute in session
+                    model = new ModelAndView("pages/admin/manager");
+                    model.addObject("adminLogin", user_);
+                    return model;
+                }
+            }
         }
 
+
+        model = new ModelAndView("pages/admin/adminLogin");
 
         return model;
     }

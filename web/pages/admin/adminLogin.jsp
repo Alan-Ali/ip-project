@@ -14,7 +14,7 @@
 <body>
 <div class="container-">
   <h2>Login</h2>
-  <form action="${pageContext.request.contextPath}/user-login" method="get">
+  <form action="${pageContext.request.contextPath}/admin-login" method="get">
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email" name="email" required>
@@ -27,9 +27,9 @@
       <button type="submit" class="btn btn-primary btn-block">Login</button>
     </div>
   </form>
-  <div class="create-account">
-    <a href="${pageContext.request.contextPath}/signup">Create an account</a>
-  </div>
+<%--  <div class="create-account">--%>
+<%--    <a href="${pageContext.request.contextPath}/signup">Create an account</a>--%>
+<%--  </div>--%>
 </div>
 
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.bundle.js"></script>

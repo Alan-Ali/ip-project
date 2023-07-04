@@ -7,6 +7,15 @@ public class Hotels {
     private double hotel_room_price;
     private String hotel_image_name;
     private String hotel_image_ext;
+    private int hotel_star;
+
+    public int getHotel_star() {
+        return hotel_star;
+    }
+
+    public void setHotel_star(int hotel_star) {
+        this.hotel_star = hotel_star;
+    }
 
     public String getHotel_image_name() {
         return hotel_image_name;

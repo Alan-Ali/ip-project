@@ -50,8 +50,8 @@ public class UserController implements CRUDController<User> {
                 return -1;
             }
         }
-        userDAO.add(object);
-        return 1;
+
+        return userDAO.add(object);
     }
 
     @PutMapping("/update")
@@ -60,8 +60,7 @@ public class UserController implements CRUDController<User> {
         User existingUser = userDAO.getById(object.getId());
         if (existingUser != null) {
             object.setId(object.getId());
-            userDAO.update(object);
-            return 1;
+            return userDAO.update(object);
         } else {
             return -1;
         }
@@ -69,13 +68,10 @@ public class UserController implements CRUDController<User> {
 
     @DeleteMapping("/delete/{id}")
     @Override
-    public int delete(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         User existingUser = userDAO.getById(id);
         if (existingUser != null) {
             userDAO.delete(id);
-            return 1;
-        } else {
-            return -1;
         }
     }
 
@@ -129,6 +125,7 @@ public class UserController implements CRUDController<User> {
                 if (existingUser != null) {
                     userDAO.update(userObject);
                 }
+                System.out.println(" reached user image end");
 
             } catch (Exception e) {
                 e.printStackTrace();

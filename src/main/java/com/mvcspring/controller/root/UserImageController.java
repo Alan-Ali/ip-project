@@ -71,13 +71,10 @@ public class UserImageController implements CRUDController<UserImage> {
 
     @DeleteMapping("/delete/{id}")
     @Override
-    public int delete(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         UserImage existingUserImage = userImageDAO.getById(id);
         if (existingUserImage != null) {
             userImageDAO.delete(id);
-            return 1;
-        } else {
-            return -1;
         }
     }
 }

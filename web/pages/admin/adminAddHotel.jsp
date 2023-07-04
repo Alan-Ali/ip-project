@@ -7,7 +7,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/adminAddHotel.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/admin/adminAddHotel.css">
   <style>
 
   </style>
@@ -22,30 +22,30 @@
             <h4>Add Hotel</h4>
           </div>
           <div class="card-body">
-            <form action="process_form.php" method="POST" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/hotels/updateWithImage" method="POST" enctype="multipart/form-data">
               <div class="mb-3">
                 <label for="photo" class="form-label">Photo:</label>
-                <input type="file" id="photo" name="photo" class="form-control" required>
+                <input type="file" id="photo" name="file" class="form-control" required>
               </div>
 
               <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <input type="text" id="name" name="hotel_name" class="form-control" required>
               </div>
 
               <div class="mb-3">
                 <label for="star" class="form-label">Star Rating:</label>
-                <input type="number" id="star" name="star" class="form-control" required>
+                <input type="number" id="star" name="hotel_star" class="form-control" required>
               </div>
 
               <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
-                <textarea id="description" name="description" class="form-control" required></textarea>
+                <textarea id="description" name="hotel_description" class="form-control" required></textarea>
               </div>
 
               <div class="mb-3">
                 <label for="cost" class="form-label">Cost:</label>
-                <input type="number" id="cost" name="cost" class="form-control" required>
+                <input type="number" id="cost" name="hotel_room_price" class="form-control" required>
               </div>
 
               <div class="text-center">

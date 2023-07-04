@@ -30,9 +30,9 @@ public class HotelsDAO implements CRUDDao<Hotels> {
 
     @Override
     public int add(Hotels object) {
-        String sql = "INSERT INTO hotels (hotel_id, hotel_name, hotel_description, hotel_room_price, hotel_image_name, hotel_image_ext) VALUES (?, ?, ?,?, ?,?);";
+        String sql = "INSERT INTO hotels (hotel_id, hotel_name, hotel_description, hotel_room_price, hotel_image_name, hotel_image_ext, hotel_star) VALUES (?, ?, ?,?, ?,?,?);";
         int affectedRows = jdbcTemplate.update(sql, object.getHotel_id(), object.getHotel_name(), object.getHotel_description(),
-                object.getHotel_room_price(), object.getHotel_image_name(), object.getHotel_image_ext());
+                object.getHotel_room_price(), object.getHotel_image_name(), object.getHotel_image_ext(), object.getHotel_star());
 
         if (affectedRows > 0) {
             return object.getHotel_id();
@@ -44,9 +44,10 @@ public class HotelsDAO implements CRUDDao<Hotels> {
 
     @Override
     public int update(Hotels object) {
-        String sql = "UPDATE hotels SET hotel_id = ?, hotel_name = ?, hotel_description = ?, hotel_room_price = ?, hotel_image_name = ?, hotel_image_ext = ? WHERE hotel_id = " + object.getHotel_id();
+        String sql = "UPDATE hotels SET hotel_id = ?, hotel_name = ?, hotel_description = ?, hotel_room_price = ?, hotel_image_name = ?, hotel_image_ext = ?, hotel_star = ? WHERE hotel_id = " + object.getHotel_id();
         int affectedRows = jdbcTemplate.update(sql, object.getHotel_id(), object.getHotel_name(),
-                object.getHotel_description(), object.getHotel_room_price(), object.getHotel_image_name(), object.getHotel_image_ext());
+                object.getHotel_description(), object.getHotel_room_price(), object.getHotel_image_name(),
+                object.getHotel_image_ext(), object.getHotel_star());
         if (affectedRows > 0) {
             return object.getHotel_id();
         } else {

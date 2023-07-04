@@ -1,4 +1,10 @@
 <%@ page import="com.mvcspring.models.User" %>
+<%@ page import="com.mvcspring.controller.root.BookingController" %>
+<%@ page import="com.mvcspring.controller.root.HotelController" %>
+<%@ page import="com.mvcspring.models.Booking" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.mvcspring.models.Hotels" %>
+<%@ page import="com.mvcspring.utils.FileUploadPath" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +28,7 @@
             <h1>User Profile</h1>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/resources/images/1.jpg" alt="User Photo" class="img-fluid">
+                    <img src="${profileImage}" alt="User Photo" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                     <h2>Name: ${login.getUsername()}</h2>
@@ -42,35 +48,44 @@
         <section id="hotel-booking-section m-5">
             <h2 class="mt-5">My Bookings</h2>
             <div class="row mt-5">
+
+                <%
+                    BookingController bookingController = new BookingController();
+                    HotelController hotelController = new HotelController();
+
+                    User user = (User) session.getAttribute("login");
+
+
+                    List<Booking> bookingList = bookingController.getAll();
+                    List<Hotels> hotelsList = hotelController.getAll();
+
+                    for(Booking booking: bookingList){
+                        if(user.getId() == booking.getUser_id()){
+                            for (Hotels hotel: hotelsList){
+                                if(booking.getHotel_id() == hotel.getHotel_id()){
+
+                %>
+
                 <!-- Hotel 1 -->
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/images/abu-sana.jpg" class="card-img-top w-100 " alt="abu-sana">
+                        <img src="<%=FileUploadPath.directoryName()%>/<%=hotel.getHotel_image_name()%>.<%=hotel.getHotel_image_ext()%>" class="card-img-top w-100 " alt="abu-sana">
                         <div class="card-body">
-                            <h3 class="card-title">Abu Sana</h3>
+                            <h3 class="card-title"><%=hotel.getHotel_name()%></h3>
                             <p class="card-text">Location: sulaimani</p>
-                            <p class="card-text">Price: $100 per night</p>
+                            <p class="card-text">Price: <%=hotel.getHotel_room_price()%> per night</p>
                             <!-- Add more hotel information as needed -->
                             <!-- Add a button to book this hotel -->
                             
                         </div>
                     </div>
                 </div>
-                <!-- Hotel 2 -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/images/grand2.jpg" class="card-img-top w-100 h-100" alt="grand-millennium">
-                        <div class="card-body">
-                            <h3 class="card-title">Grand Millennium</h3>
-                            <p class="card-text">Location: sulaimani</p>
-                            <p class="card-text">Price: $150 per night</p>
-                            <!-- Add more hotel information as needed -->
-                            <!-- Add a button to book this hotel -->
-                           
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more Hotels as needed -->
+                <% break;
+                                }%>
+                <%}%>
+                <%}%>
+                <%}%>
+
             </div>
         </section>
     </div>

@@ -16,6 +16,6 @@ public interface CRUDController<Type> {
     @PutMapping("/update")
     int update(@ModelAttribute Type object);
     @DeleteMapping("/delete/{id}")
-    int delete( @PathVariable int id);
+    void delete( @PathVariable int id);
 
 }

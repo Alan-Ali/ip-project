@@ -5,11 +5,17 @@ import com.mvcspring.DAO.HotelsDAO;
 import com.mvcspring.interfaces.CRUDController;
 import com.mvcspring.models.Booking;
 import com.mvcspring.models.Hotels;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Objects;
 
+@Component
+@Controller
+@RequestMapping("/booking")
 public class BookingController implements CRUDController<Booking> {
 
 
@@ -60,13 +66,18 @@ public class BookingController implements CRUDController<Booking> {
 
     @DeleteMapping("/delete/{id}")
     @Override
-    public int delete(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         Booking existingBooking = bookingDAO.getById(id);
         if (existingBooking != null) {
             bookingDAO.delete(id);
-            return 1;
-        } else {
-            return -1;
         }
     }
+
+
+    @PostMapping("/post-all")
+    public ModelAndView addAll(@ModelAttribute Booking object) {
+        bookingDAO.add(object);
+        return new ModelAndView("pages/user/form");
+    }
+
 }

@@ -50,7 +50,7 @@ public class Views {
 
     @RequestMapping("/hotels")
     public ModelAndView hotels() {
-        return new ModelAndView("pages/user/form");
+        return new ModelAndView("pages/user/hotels");
     }
 
     @RequestMapping("/main")

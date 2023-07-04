@@ -6,7 +6,7 @@
   <title>Edit Profile</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/all.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/profileEdit.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pages/user/profileEdit.css">
   <style>
     body {
       background-image: url('${pageContext.request.contextPath}/resources/images/9.jpg');
