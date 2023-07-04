@@ -58,7 +58,7 @@
 
                     List<Booking> bookingList = bookingController.getAll();
                     List<Hotels> hotelsList = hotelController.getAll();
-
+                if(bookingList != null){
                     for(Booking booking: bookingList){
                         if(user.getId() == booking.getUser_id()){
                             for (Hotels hotel: hotelsList){
@@ -82,6 +82,7 @@
                 </div>
                 <% break;
                                 }%>
+                <%}%>
                 <%}%>
                 <%}%>
                 <%}%>
